@@ -37,6 +37,10 @@ const configLog = {
             category: 'console'
         },
         {
+            pattern: 'file/yyyyMMddhh.txt',
+            category: 'logFile'
+        },
+        {
             pattern: 'debug/yyyyMMddhh.txt',
             category: 'logDebug'
         },
@@ -50,6 +54,7 @@ const configLog = {
      */
     replaceConsole: true,
     levels:{
+        logFile: 'DEBUG',
         logDebug: 'DEBUG',
         logInfo: 'DEBUG'
     }
@@ -78,8 +83,13 @@ configLog.appenders.forEach(item => {
 // 目录创建完毕，才加载配置，不然会出异常
 log4js.configure(configLog);
 
+let logFile = log4js.getLogger('logFile');
 let logDebug = log4js.getLogger('logDebug');
 let logInfo = log4js.getLogger('logInfo');
+
+helper.file = ( msg = '' ) => {
+    logFile.info(msg);
+};
 
 helper.debug = ( msg = '' ) => {
     logDebug.debug(msg);

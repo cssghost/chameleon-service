@@ -1,3 +1,8 @@
+/**
+* @fileOverview type.tools.test.js 测试 isType 功能
+* @author 徐晨 ( xuchen011@sina.com )
+*/
+
 const expect = require('chai').expect;
 const typeTools = require('./../../tools/type.tools.js');
 
